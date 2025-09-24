@@ -72,7 +72,7 @@
             {
                 Console.WriteLine("pikkust ei tunta");
             }
-            //kalkulator
+            //3 kalkulator
             Console.WriteLine("Tere. Sisesta esimine liidetav arv");
             int arv1 = int.Parse(Console.ReadLine());
             Console.WriteLine("Tere. Sisesta esimine liidetav arv");
@@ -109,6 +109,23 @@
             else
             {
                 Console.WriteLine("Tulemus on 0, või üristasid teha tehet, mida kalkulator ei tunne");
+            }
+
+            //4 parool
+            Console.WriteLine("Programmi edasiseks tööks sisesta palun parool:");
+            string password = Console.ReadLine();
+
+            if (password == "shabolda")
+            {
+                Console.WriteLine("Parool on õige, aarete laegas avaned");
+            }
+            else if (password == "saatana" || password == "4321")
+            {
+                Console.WriteLine("Parool on sobimatu, palun mingi muu");
+            }
+            else
+            {
+                Console.WriteLine("Parool on vale, proovi uuesti");
             }
         }
 
