@@ -72,6 +72,45 @@
             {
                 Console.WriteLine("pikkust ei tunta");
             }
+            //kalkulator
+            Console.WriteLine("Tere. Sisesta esimine liidetav arv");
+            int arv1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Tere. Sisesta esimine liidetav arv");
+            int arv2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Sisesta tehtemärk: / * + -");
+            string tehteyyp = Console.ReadLine();
+
+            int tulemus = 0;
+            if (tehteyyp == "+") 
+            {
+                tulemus = arv1 + arv2;
+
+            }
+            else if (tehteyyp == "-")
+            {
+                tulemus = arv1 - arv2;
+            }
+            else if (tehteyyp == "/")
+            {
+                tulemus = arv1 / arv2;
+            }
+            else if (tehteyyp == "*")
+            {
+                Math.Pow(arv1, arv2);
+            }
+            else
+            {
+                Console.WriteLine("Palun sisesta tehe, mida kalkulator tuvasta oskab");
+            }
+            if (tulemus != 0)
+            {
+                Console.WriteLine(tulemus);
+            }
+            else
+            {
+                Console.WriteLine("Tulemus on 0, või üristasid teha tehet, mida kalkulator ei tunne");
+            }
         }
+
     }
 }
