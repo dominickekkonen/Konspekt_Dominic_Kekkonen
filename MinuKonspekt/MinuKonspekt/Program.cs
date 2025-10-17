@@ -151,6 +151,66 @@
                 Console.WriteLine("Värvi ei tunne");
             }
             Console.WriteLine("värv muudetud");
+
+
+
+
+            //# Kolija kalkulaator - Kirjuta programm mis:
+            //#    - Küsib kasutajalt kas ta tahab ära mõõta pappkasti või õlitünni.
+            //#    - olenevalt kasutaja sisestusest küsib ta:
+            //#    - - tünni jaoks:
+            //#    - - - kas kasutaja teab põhja raadiust (r) või põhja läbimõõtu (d):
+            //#    - - - tünni kõrgust
+            //#    - - - kaane paksust (kaane paksus võtab tünni kõrgusest maha, kuna kaan võtab tünni sisust natuke ruumi)
+            //#    - - - Arvutab tünni ruumala mahu, tünni küljepindala, tünni kogupindala
+            //#    - - kasti jaoks:
+            //#    - - - Kas kast on kuubiku kujuline või risttahuka kujuline
+            //#    - - - - kui on kuubik, siis küsib kasutajalt ainult küljepikkust
+            //#    - - - - kui on risttahukas siis küsib kasutajalt:
+            //#    - - - - - pikima külje pikkust, 
+            //#    - - - - - lühima külje pikkust ja
+            //#    - - - - - kasti kõrgust
+            //#    - - arvutab vastavalt kasti kogupindala, mahu, ja pikima läbiva joone (d)
+
+            string kasutajanimi = "";
+            do
+            {
+                Console.WriteLine("palun sisesta oma kasutajanimi: ");
+                kasutajanimi = Console.ReadLine();
+            } while (kasutajanimi != "user1");
+            Console.WriteLine("pass");
+            if (kasutajanimi == "user1")
+            {
+                int ruuduSuurus = 0;
+
+                do
+                {
+                    Console.WriteLine("Kui suurt ruutu saada tahad?");
+                    ruuduSuurus = int.Parse(Console.ReadLine());
+                } while (ruuduSuurus < 0 && ruuduSuurus > 20);
+
+                char reaKujund = '#';
+                string üksRida = "";
+                int tsükliMuutuja = ruuduSuurus;
+
+                do
+                {
+                    üksRida = üksRida + "_" + reaKujund;
+                    tsükliMuutuja = tsükliMuutuja - 1;
+                } while (tsükliMuutuja != 0);
+
+                tsükliMuutuja = ruuduSuurus;
+
+                do
+                {
+                    Console.WriteLine(üksRida);
+                    tsükliMuutuja -= 1;
+                } while (tsükliMuutuja != 0);
+
+                Console.WriteLine($"Palun, siin on sinu ruut, suurusega {ruuduSuurus}x{ruuduSuurus}");
+            }
+
+
         }
 
     }
