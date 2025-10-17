@@ -1,4 +1,6 @@
-﻿namespace MinuKonspekt
+﻿using System.ComponentModel.Design;
+
+namespace MinuKonspekt
 {
     internal class Program
     {
@@ -172,43 +174,117 @@
             //#    - - - - - kasti kõrgust
             //#    - - arvutab vastavalt kasti kogupindala, mahu, ja pikima läbiva joone (d)
 
-            string kasutajanimi = "";
-            do
+            Console.WriteLine("Sisesta ostusumma");
+            double ostusumma = double.Parse(Console.ReadLine());
+            if (ostusumma > 100)
             {
-                Console.WriteLine("palun sisesta oma kasutajanimi: ");
-                kasutajanimi = Console.ReadLine();
-            } while (kasutajanimi != "user1");
-            Console.WriteLine("pass");
-            if (kasutajanimi == "user1")
-            {
-                int ruuduSuurus = 0;
-
-                do
-                {
-                    Console.WriteLine("Kui suurt ruutu saada tahad?");
-                    ruuduSuurus = int.Parse(Console.ReadLine());
-                } while (ruuduSuurus < 0 && ruuduSuurus > 20);
-
-                char reaKujund = '#';
-                string üksRida = "";
-                int tsükliMuutuja = ruuduSuurus;
-
-                do
-                {
-                    üksRida = üksRida + "_" + reaKujund;
-                    tsükliMuutuja = tsükliMuutuja - 1;
-                } while (tsükliMuutuja != 0);
-
-                tsükliMuutuja = ruuduSuurus;
-
-                do
-                {
-                    Console.WriteLine(üksRida);
-                    tsükliMuutuja -= 1;
-                } while (tsükliMuutuja != 0);
-
-                Console.WriteLine($"Palun, siin on sinu ruut, suurusega {ruuduSuurus}x{ruuduSuurus}");
+                Console.WriteLine("Saad 20% allahindlust!");
             }
+            else if (ostusumma < 101 && ostusumma > 50)
+            {
+                Console.WriteLine("Saad 10% allahinlust!");
+            }
+            else if (ostusumma < 51 && ostusumma > 20)
+            {
+                Console.WriteLine("5% allahindlust!");
+            }
+            else if (ostusumma < 21 && ostusumma > 0)
+            {
+                Console.WriteLine("Allahinlust ei saa");
+            }
+            else
+            {
+                Console.WriteLine("sisestanud on vigane arv");
+            }
+
+
+            //string kasutajanimi = "";
+            //do
+            //{
+            //    Console.WriteLine("palun sisesta oma kasutajanimi: ");
+            //    kasutajanimi = Console.ReadLine();
+            //} while (kasutajanimi != "user1");
+            //Console.WriteLine("pass");
+            //if (kasutajanimi == "user1")
+            //{
+            //    int ruuduSuurus = 0;
+
+            //    do
+            //    {
+            //        Console.WriteLine("Kui suurt ruutu saada tahad?");
+            //        ruuduSuurus = int.Parse(Console.ReadLine());
+            //    } while (ruuduSuurus < 0 && ruuduSuurus > 20);
+
+            //    char reaKujund = '#';
+            //    string üksRida = "";
+            //    int tsükliMuutuja = ruuduSuurus;
+
+            //    do
+            //    {
+            //        üksRida = üksRida + "_" + reaKujund;
+            //        tsükliMuutuja = tsükliMuutuja - 1;
+            //    } while (tsükliMuutuja != 0);
+
+            //    tsükliMuutuja = ruuduSuurus;
+
+            //    do
+            //    {
+            //        Console.WriteLine(üksRida);
+            //        tsükliMuutuja -= 1;
+            //    } while (tsükliMuutuja != 0);
+
+            //    Console.WriteLine($"Palun, siin on sinu ruut, suurusega {ruuduSuurus}x{ruuduSuurus}");
+            //}
+            /* tingimuslause osad */
+            if (true) { }  //kasustud sõna "if" kutsub esile tingimuse, mille tingimus on sulgude vahel, ning millele jargneb
+                           //koodiplokk tingimuse täitumisel teostatava koodiga
+            else if (true) { } //kaitstud sõnad "else" ja "if" (else if) kutsuvad esile sekundaarse tingimuslause, mille tingimus 
+                               //on saamamoodi sulgude vahel, ning millele peab eelnema alat kas "if" või teine "else if". Tingimus
+                               //ja eelneva tingimuse mittetäitumisel, teostatakse koodiplokki sees olev kood.
+            else { } //kaitstud sõna "else" kutsub esile järeltingimuse, millele peab eelnema kas "if" või "else if", ning mille koodiplokki sisu
+                    //täidetakse kõikide teiste "if" ja "else if" tingimuse läbikukkumisel.
+
+            /* Loogilised tehted */
+
+            //&& -> "and" annab positivse vastuse (true) kui tingimused on täidetud, aga kui pole siis annab negativse vastuse (false)
+            //|| -> "or"! annab positivse vastuse (true) kui vähemalt üks tingimus on täidetud.
+            //Negatiivse vastus (false) on siis kui tingimused on täidmata
+            //! -> "not" Tulemus mis muidu tagastaks (true), hÜÜumärgi abil tagastab (false), ja vastupidi
+
+            /* Võrdlusoperatorid */
+
+            // == -> "on võrdne"  Võrdusmärkide ühel pool olev objekt peab vastama täpselt oma olemuselt võrdusmärkide teise pool
+            // oleva objektiga. ei ole sama nagu üks võrdusmärk, üks võrdusmärk omistab, kaks võrdleb.
+            // != -> "ei ole võrdne". Võrdusmärgi ühel pool olev objekt *EI TOHI* olla samal kujul nagu võrdusmärgi teisel pool
+            // olev objekt. Ta võib olla ükskõik mis muul kujul, aga mitte võrreldava objektiga samal kujul. Võrdlusoperaator on
+            // kombinatsioon "on võrdne operaatorist, ja loogilisest tehetst 'not'.
+            // > -> "on suurem kui". Märgist vasakul pool olev objekty peaks olema suurem, kui paremal pool olev objekt.
+            // < -> "on väiksem kui". Märgist vasakul pool olev objekty peaks olema väiksem, kui paremal pool olev objekt.
+            // >= -> "suuremvõrdne". Märgist vasakul pool olev objekt peaks olema vähemalt võrdne või suurem kui parempoolne objekt.
+            // Võrdlusoperaator on kombinatsioon "on võrdne" ja "on suurem kui" operaatoritest.
+            // <= -> "väiksemvõrdne". Märgist vasakul pool olev objekt peaks olema vähemalt võrdne või väiksem kui parempoolne objekt.
+            // Võrdlusoperaator on kombinatsioon "on võrdne" ja "on väiksem kui" operaatoritest.
+
+            /* omistusoperaatorid ja kiirtehted */
+
+            int thing = 1; // = -> üksik võrdusmärk omistab muutuja sisse väärtuse, mida saab kasutada läbi muutuja nime.
+            thing += 1;   // += -> võrdusmärk mille ees on pluss, automaatselt liidab muutujale otsa võrdusmärgi teisel pool oleva arvu.
+                          // asendab tehet "thing = thing + 1". on kombinatsioon matemaatilisest tehtest "+" ja omistamisest "=".
+            thing -= 1;   // -= -> võrdusmärk mille ees on miinus, automaatselt lahutab muutujast maha võrdusmärgi teisel pool oleva arvu.
+                          // asendab tehet "thing = thing - 1". on kombinatsioon matemaatilisest tehtest "-" ja omistamisest "=".
+            thing *= 2;   // *= -> võrdusmärk mille ees on korrutusmärk "*", automaatselt korrutab muutujasisu, võrdusmärgi teisel pool
+                          // oleva arvu kordsi. asendab tehet "thing = thing * 2". on kombinatsioon matemaatilisest tehtest "*" ja
+                          // omistamisest "=".
+            thing /= 2;   // /= -> võrdusmärk mille ees on jagamismärk "/", automaatselt jagab muutujasisu võrdusmärgi teisel pool oleva
+                          // arvu osadeks. asendab tehet "thing = thing / 2". on kombinatsioon matemaatilisest tehtest "/" ja
+                          // omistamisest "=".
+            thing++;     // ++ -> on spetsiifiliselt ühe juurde liitmiseks kiirthete.
+            thing--;     // -- -> on spetsiifiliselt ühe maha lahutamiseks kiirthete.
+
+                /* Tsüklid */
+                // 1. do-while
+                // "do" on kaitstud sõna, mis alustab do-while tsüklit. Pärast seda on koodiplokk {} ning ütleb et tee seda koodi
+                 
 
 
         }
