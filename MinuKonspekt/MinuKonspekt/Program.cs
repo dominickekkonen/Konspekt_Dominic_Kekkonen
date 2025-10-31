@@ -242,7 +242,33 @@ namespace MinuKonspekt
                                //on saamamoodi sulgude vahel, ning millele peab eelnema alat kas "if" või teine "else if". Tingimus
                                //ja eelneva tingimuse mittetäitumisel, teostatakse koodiplokki sees olev kood.
             else { } //kaitstud sõna "else" kutsub esile järeltingimuse, millele peab eelnema kas "if" või "else if", ning mille koodiplokki sisu
-                    //täidetakse kõikide teiste "if" ja "else if" tingimuse läbikukkumisel.
+                     //täidetakse kõikide teiste "if" ja "else if" tingimuse läbikukkumisel.
+
+            int option = 3; // -------
+            switch (option) //*switch on kaitstud sõõna alternatiivse tingimuskontrolli jaoks mida saab ef else-if asemel kasutada.
+                            //Sulgude vahele käib muutuja nimi, mille põhjal tngimuslik ümberlülitus toimub. Siin silgude vahel 
+                            //ei ole tingimuse ise, vaid kõigest kontrollitav muutuja, või omakorda sulgude vajal muu tingimus.
+                            //pärast lülitusvalikut tuleb koodiplokk.
+            {
+                case 1:     //koodiploki sees on erinevad juhtumid, juhtumit sätestatakse sõna "case" abil. antud juhul kontrollitakse, 
+                            //kas muutujas "option" on väärtus 1, millele järgneb koolon ":" väljendades tingimuse täitumisel tehtava 
+                            //kooditegevuse algust
+                    break;  //Kui tegevus on tehtud, väljutakse mitte ainult juhtumist vaid kogu käesoleva case-tingimuslikust kaitstud 
+                            //sõnaga "break". Peale breaki on lauselõpumärk ";". 
+                            //Juhtumeid võib olla mitmeid, antud juhul on neid kolm kindlalt
+                case 2:
+                    break;
+                case 3:
+                    Console.WriteLine(option);
+                    break;
+                default:    //Default juhtumit täidetakse siis, kui ülejaanud juhtumid ei kirjelda muutujas "option" olevat seisu
+                    break;  //Ka default lõppeb sõnaga break
+            }
+
+            /* sõne tööristad ja muud tekstiga seotud */
+            string alfa = "a\nb";          // \n -> tekitab ühe sõne sisse reamurde, sõne kus on sees üks "\n", omab kahte rida.
+            string beta = $"a {alfa} b";   // $  -> lubab kasutada muutjaid loogelise sulgudega otse teksti sees. On variant
+                                           //       formateeritud stringist.
 
             /* Loogilised tehted */
 
@@ -281,12 +307,65 @@ namespace MinuKonspekt
             thing++;     // ++ -> on spetsiifiliselt ühe juurde liitmiseks kiirthete.
             thing--;     // -- -> on spetsiifiliselt ühe maha lahutamiseks kiirthete.
 
-                /* Tsüklid */
-                // 1. do-while
-                // "do" on kaitstud sõna, mis alustab do-while tsüklit. Pärast seda on koodiplokk {} ning ütleb et tee seda koodi
-                 
+            /* Tsüklid */
+            // 1. do-while
+            int dew = 0;
+            do   // "do" on kaitstud sõna, mis alustab do-while tsüklit. Pärast seda on koodiplokk {} ning ütleb et tee seda koodi
+            {
 
+                dew++;
+            } while (dew != 5); //miikaua kuni while järel olevate sulgude vahel tingimus ei täitu, 
 
+            //2. while 
+            int i = 1;    //tsüklimuutuja mis aitab järge pidada while tsükli toimimisel
+            while (i < 5) ; //"while" on kaitstud sõna mis alustab while tsükli varianti, ilma "do"-ta, ning vajab alati välist
+                            //tsüklimuutujat. antud juhul on selleks i. Tsükli tingimus, mis peale "while" sõna on, asub sulgude vahel,
+                            //siin kontrollitaksegi tsükli tööd, läbi kindla tingimuse kasutades tsüklimuutjat.
+                            //antud juhul tsükkel töötab niikaua, kuni i on väiksem kui 5. kui i on sama suur nagu 5, siis tsükkel 
+                            //katkeb.
+
+            //koodiplokk kus midagi tehakse 
+            i++;        //ning seejärel muudetakse tsüklimuutuja "i" olekut. antud jahul liidetakse 1 juurde kiirtehtega "++".
+
+            //3. For 
+            int kogus = 6;      //muutuja mida tsükkel kasutab oma töö tegemiseks - teisisõnu, töödeldav materjal 
+            for (int k = 0; k < 5; k++)     //kaitstud sõna "for" alustab for-tsüklit, pärast mida on sulud, mille vahel on kõik tsükli 
+                                            //töö jaoks vajalik olemas. Esimine parameeter, tekitab tsükli töö jaoks kohaliku muutuja 
+                                            //"int" k = 0;" mida tsükli ENDA töö juhtmiseks. Teine parameeter on tingimuslause, mis kontrollib 
+                                            //tingimuse täitmust "k < kogus;" ning mille täistumisel tsükli töö jatkub, aga mille 
+                                            //mitte-täitumisel tsükkel katkeb. Kolmas paraameeter on tsüklimuutuja inkrementeerimine kiirtähtega 
+                                            //"k++", Pane tähele, et iga sulgude vahel oleva osa jarel (välja arvatud viimase) on
+                                            //lauselõpumark. Tsükli tööd kontrolliv tingimuslause koosneb kolmest reast, mitte ühest 
+                                            //nagu "while" või "do-while" puhul. 
+                                            //sulgudele järgneb, loodeliste sulgude vahel ole koodiplokk {}
+                                            //töötlustegevus tsükli sees, on muutuja "k" hetkearvu väljakuvamine.
+            {
+                Console.WriteLine(k);
+            }
+
+            /* Võimalikud komposiitandmetüübid */
+            // 1. massiiv:
+            // [] - > Massiiv on komposiitandmetüüp, mille sees saab olla mitmeid samat tüüpi lihtandmeid. Massiivi tähistatakse kantsulgudega.
+            //        Massiive saab olla ükskõik millist lihtandmetüüpi massiive.
+            //        Massiivi tekitamisel tuleb ära öelda kui pikk või kui suur see massiiv on.
+            //        Massiiv ei pea olema koostatud ainult lihtandmetüüpidest, vaid massiive saab olla ka tehtud teistest komposiitandmetüüpidest
+            //        Sealhulgas massiiv ise.
+            //Esimine tekstiviis:
+            int[] arvuMassiiv = new int[5];     // andmetüüp int väljendab, et tegu on täisarvutüüpi andmega
+                                                // ja kandilised sulud väljendavad, et tegu on massiiviga.
+                                                // Muutuja nimeks on "arvuMassiiv" ja võrdusmärgi abil on
+                                                // omistatud muutujasse uus tühi massiiv, kasutades käsku "new",
+                                                // millele järgneb massiivi andmetüüp ja pikkuse sätestus "int[3]".
+                                                // See tähendab, et siin massiivis on 3 elementi, mis on täisarvud.
+            //Teine tekitusviis:
+            int[] arvuMassiiv2 = [1, 2, 3];     // Teine massiivi tekitusviis, kus järjendi pikkuse sätestamise asemel
+                                                // pannakse elemendid kohe järjendit omava muutujasse sisse.
+                                                // Järjendi pikkust sätestama ei pea, kuna pikkuse tuletab kompilaator ise
+                                                // elementide arvust (antud juhul 3).
+            // -- massiivi sisemised meetodid:
+            int hasThisMany = arvuMassiiv.Length; //massiivi meetod "Lenght" mille me saame kasutusele võtta punkti abil, loendab kokku 
+                                                  //mittu elementi, adresseritav massiiv omab, omistatakse ainult järjendi pikkus, mitte 
+                                                  //järjendi sees olevaid elemente.
         }
 
     }
