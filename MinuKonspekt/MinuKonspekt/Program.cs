@@ -48,7 +48,7 @@ namespace MinuKonspekt
             double pikkus = double.Parse(Console.ReadLine());
             if (pikkus < 1.00d)
             {
-                Console.WriteLine("Oled  juntsu");  
+                Console.WriteLine("Oled  juntsu");
             }
             else if (pikkus <1.25d && pikkus > 1.00d)
             {
@@ -83,7 +83,7 @@ namespace MinuKonspekt
             string tehteyyp = Console.ReadLine();
 
             int tulemus = 0;
-            if (tehteyyp == "+") 
+            if (tehteyyp == "+")
             {
                 tulemus = arv1 + arv2;
 
@@ -132,15 +132,15 @@ namespace MinuKonspekt
             //5 värvituvastus
             Console.WriteLine("Miline värv sulle kõige rohkem meeldib?:");
             string favouriteColour = Console.ReadLine();
-            if(favouriteColour == "punane")
+            if (favouriteColour == "punane")
             {
                 Console.BackgroundColor = ConsoleColor.Red;
             }
-            if(favouriteColour == "oranz")
+            if (favouriteColour == "oranz")
             {
                 Console.WriteLine("Kahjuks oranzi ei ole");
             }
-            if(favouriteColour == "kollane")
+            if (favouriteColour == "kollane")
             {
                 Console.BackgroundColor= ConsoleColor.Yellow;
             }
@@ -198,43 +198,43 @@ namespace MinuKonspekt
             }
 
 
-            //string kasutajanimi = "";
-            //do
-            //{
-            //    Console.WriteLine("palun sisesta oma kasutajanimi: ");
-            //    kasutajanimi = Console.ReadLine();
-            //} while (kasutajanimi != "user1");
-            //Console.WriteLine("pass");
-            //if (kasutajanimi == "user1")
-            //{
-            //    int ruuduSuurus = 0;
+            string kasutajanimi = "";
+            do
+            {
+                Console.WriteLine("palun sisesta oma kasutajanimi: ");
+                kasutajanimi = Console.ReadLine();
+            } while (kasutajanimi != "user1");
+            Console.WriteLine("pass");
+            if (kasutajanimi == "user1")
+            {
+                int ruuduSuurus = 0;
 
-            //    do
-            //    {
-            //        Console.WriteLine("Kui suurt ruutu saada tahad?");
-            //        ruuduSuurus = int.Parse(Console.ReadLine());
-            //    } while (ruuduSuurus < 0 && ruuduSuurus > 20);
+                do
+                {
+                    Console.WriteLine("Kui suurt ruutu saada tahad?");
+                    ruuduSuurus = int.Parse(Console.ReadLine());
+                } while (ruuduSuurus < 0 && ruuduSuurus > 20);
 
-            //    char reaKujund = '#';
-            //    string üksRida = "";
-            //    int tsükliMuutuja = ruuduSuurus;
+                char reaKujund = '#';
+                string üksRida = "";
+                int tsükliMuutuja = ruuduSuurus;
 
-            //    do
-            //    {
-            //        üksRida = üksRida + "_" + reaKujund;
-            //        tsükliMuutuja = tsükliMuutuja - 1;
-            //    } while (tsükliMuutuja != 0);
+                do
+                {
+                    üksRida = üksRida + "_" + reaKujund;
+                    tsükliMuutuja = tsükliMuutuja - 1;
+                } while (tsükliMuutuja != 0);
 
-            //    tsükliMuutuja = ruuduSuurus;
+                tsükliMuutuja = ruuduSuurus;
 
-            //    do
-            //    {
-            //        Console.WriteLine(üksRida);
-            //        tsükliMuutuja -= 1;
-            //    } while (tsükliMuutuja != 0);
+                do
+                {
+                    Console.WriteLine(üksRida);
+                    tsükliMuutuja -= 1;
+                } while (tsükliMuutuja != 0);
 
-            //    Console.WriteLine($"Palun, siin on sinu ruut, suurusega {ruuduSuurus}x{ruuduSuurus}");
-            //}
+                Console.WriteLine($"Palun, siin on sinu ruut, suurusega {ruuduSuurus}x{ruuduSuurus}");
+            }
             /* tingimuslause osad */
             if (true) { }  //kasustud sõna "if" kutsub esile tingimuse, mille tingimus on sulgude vahel, ning millele jargneb
                            //koodiplokk tingimuse täitumisel teostatava koodiga
@@ -357,16 +357,198 @@ namespace MinuKonspekt
                                                 // omistatud muutujasse uus tühi massiiv, kasutades käsku "new",
                                                 // millele järgneb massiivi andmetüüp ja pikkuse sätestus "int[3]".
                                                 // See tähendab, et siin massiivis on 3 elementi, mis on täisarvud.
-            //Teine tekitusviis:
+                                                //Teine tekitusviis:
             int[] arvuMassiiv2 = [1, 2, 3];     // Teine massiivi tekitusviis, kus järjendi pikkuse sätestamise asemel
                                                 // pannakse elemendid kohe järjendit omava muutujasse sisse.
                                                 // Järjendi pikkust sätestama ei pea, kuna pikkuse tuletab kompilaator ise
                                                 // elementide arvust (antud juhul 3).
-            // -- massiivi sisemised meetodid:
+                                                // -- massiivi sisemised meetodid:
             int hasThisMany = arvuMassiiv.Length; //massiivi meetod "Lenght" mille me saame kasutusele võtta punkti abil, loendab kokku 
                                                   //mittu elementi, adresseritav massiiv omab, omistatakse ainult järjendi pikkus, mitte 
                                                   //järjendi sees olevaid elemente.
+                                                  //4. foreach
+            int[] arvuloend = { 3, 67, 420, 69, 42 }; //Massiiv mida foreach kasutab või töötleb mingil kujul
+            foreach (var arvInloend in arvuloend) ; //kaitstud sõna foreach alustab foreach tsükli. Pärast mida on sulud, mille vahel tekitatakse 
+                                                    //ajutine muutuja andmetüübiga "var" töödeldava andmekogumi üksikelemendi jaoks. süntaksis olev 
+                                                    //kaitstud sõna "in" oleva andmekogumi elementi. Tsükli  ei ole 
+            //2. Loend
+            //List<T> -> Loend on komposiitandmetüüp, mille sees saab olla mitmeid samat tüüpi liht ja komposiitandmeid. Loend- tüüpi andmeid tähistatakse 
+            //           täiendava  andmetüübikirjeldusega "List" mille järel noolsulgudesse <> asetatakse mis tüübi andmed seal loendis on.
+            //           Loendi tekitamisel, erinevalt massiivist, ei pea ütlema kui pikk loend on. Loendisse saab dünamiliselt elemente juurde lisada,
+            //           ehk tema pikkus ei ole fikseeritud. Sarnaselt massiiviga saab temas hoida ka teisi loendeid.
+            // Esimine tekitusviis: 
+            List<int> arvunimekiri = new List<int>(); //Andmetüübi kirjeldis "List<>" näidab et tegu on loendiga. Listi noolsulgude <> vahel on loendis 
+                                                      //olevate andmete andmetüüp. Antud juhul on andmetüübiks "int" mis tähistab täisarve. muutuja enda 
+                                                      //nimeks on "arvunimekiri". Omistame sellesse muutujasse kaitstud sõna "new" abil uue tühja 
+                                                      //täis arvuloendi sätestusega "List<int>()"
+            // Teine tekitusviis:
+            List<int> arvunimekiri2 = new List<int>(); //Teine loendi tekitusviis. Andmetüübi kirjeldus "List<>" näiteb et tegu on loendiga, Listi 
+                                                       //noolsuigude vahel on loendis olevate elementide andmetüüp. Antud juhul on andmetüübiks "int"
+                                                       //mis tähistab täisarve. Muutuja enda nimeks on "arvunimekiri2". Omistame selle muutujasse 
+                                                       //kaitstud sõna "new" abil uue täisarvuloendi, aga seekord, peale sätestust "List<int>()" saame 
+                                                       //instantseerimise hetkel talle kaasa anda ka esimesi elemente. Antud juhul on need elemendid 
+                                                       //1, 2, 3, . Elemendid sisestatakse nimekirja loogelise sulgude vahel. Enam ei ole tegu 
+                                                       //tühja nimekirjaga, vaid loendiga kus on kolm elementi juba sees.
+            // Kolmas tekitusviis:
+            List<int> arvuNimekiri3 = new List<int>(3);  //kolmas loendi tekitusviis. Andmetüübi kirjeldus "List<>" näitab et tegu on loendiga, Listi noolsulgude  
+                                                         //vahel on loendis olevate elementide andmetüüp. Antud juhul on andmetüübiks "int" mis tähistab täisarve.  
+                                                         //Muutuja enda nimeks on "arvulinnkiri". Omistame sellesse muutujasse käivitusseadise "new" abil uue  
+                                                         //täisarvuloendi, aga tavalisete sulgude vahele paneme arvu "3". Sarnaselt massiiviga ütleb see, et  
+                                                         //loend on 3 elemendi suurune. Loend ise ja tema elemendid on tühjad, aga seal on 3 elementi. Arv "3"  
+                                                         //on parameeter mida Listi konstruktor pikkuse määramiseks kasutab. Nimekiri säilitab oma omaduse muuta  
+                                                         //pikkust elementide lisamise–eemaldamisega, aga vajadusel saab nii anda talle pikkuse.
+            int aa = 9001;
+            // -- Loendi sisemised meetodid: 
+            arvunimekiri.Add(3); //Loendi meetod "Add()" lisab enne punkti olevale järjendile uue elemendi, element mida lisatakse on Add meetodi sulgude 
+                                 //vahel. Elementi saab lisada otse (antud juhul täisarv "3")
+            arvunimekiri2.Add(aa); //või muutujana
+            int loendipikkus = arvuNimekiri3.Count(); //Loendi meetod "Count()" loeb kokku mitu elementi jaärjendis on, meetod tagastab täisarvu mis vastab 
+                                                      //elemendide kogusele.
+            bool Kasseearvon = arvuNimekiri3.Contains(3); //Loendi meetod "Contains()" otsib kogu järjendi seest elementi, mis vastab sulgude  vahel olevale 
+                                                          //parameetrile. Meetod tagastab kas "true" või "false" - on leitud või ei ole. Tegemist on 
+                                                          //põhimõtteliselt Foreach tsükliga, mis otsib kindlat vastet, töötades läbi kogu loendi. 
+            arvuNimekiri3.Remove(4); //loendi meetod "Remove()" eemaldab en
+                                     //ee
+        }
+    }    
+        
+       //string[] konsoolid = { "Playstation 1", "Nintendo WII", "Valve steam machine" };
+
+        //List<string> mängud = new List<string>();
+
+        //string[] konsoolid = { "Playstation 1", "Nintendo WII", "Valve steam machine" };
+
+        //foreach  (var konsool in konsoolid)
+        //{
+        //    Console.WriteLine(konsool);
+        //}
+
+        //for (int i = 0; i < konsoolid.Length; i++)
+        //{
+        //    Console.WriteLine(konsoolid[i]);
+        //}
+
+        //string currentEntry = "";   //ajatine muutuja mis hoiab tekstitüüpi andmeid, hetkel tühi 
+
+        //while (currentEntry == "")  //while tsükkel mis toiib nii kaua kuni currentEntry on tühi
+        //{
+        //    Console.WriteLine("Sisesta mäng või kirjuta \"ei taha\" kui soovid esitlust lõpetada");
+        //    //esitame kasutajale sõnumi 
+        //    currentEntry = Console.ReadLine();
+        //    //paneme ajutisse muutujasse info kasutajalt
+        //    if (currentEntry =="ei taha")   //kui kasutaja kirjutas "ei taha", teeme ifi sisu
+        //    {
+        //        break;  //break katkestab kogu tsükli, peatades sisestumise
+        //    }
+        //    mängud.Add(currentEntry);   //lisame loendile otsa kasutaja sisestanud info 
+        //    currentEntry = "";  //omistame muutujasse currentEntry uuesti tühja sisestuse, et tsükel jätkuks
+        //}
+
+        //Console.WriteLine("\n\n\n");
+
+        //foreach (var mäng in mängud)
+        //{
+        //    Console.WriteLine(mäng);
+        //}
+        //        Console.WriteLine("Mis on sinu lemmikvärvid? Sisesta palun ükshaaval\n Kui rohkem värve ei ole, kirjuta \"rohkem pole\"");
+        //List<string> kasutajaVärvid = new List<string>();
+        //        string sisestus = "";
+        //do
+        //{
+        //    Console.WriteLine("Sisesta 1 värv korraga:");
+        //    sisestus = Console.ReadLine();
+        //    if (sisestus != "rohkem pole ")
+        //    {
+        //        kasutajaVärvid.Add(sisestus);
+        //    }
+
+        //} while (sisestus != "rohkem pole") ;
+
+
+        //foreach (var värv in kasutajaVärvid)
+        //{
+        //    switch (värv)
+        //    {
+        //        //punane, oranz, kollane, roheline helesinine, tumeroheline, tumesinine, lilla,
+        //        //roosa, pruun, must, valge, hall, värvi ei tuna
+        //        case "punane":
+        //            Console.BackgroundColor = ConsoleColor.Red;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">punane");
+        //            break;
+        //        case "oranz":
+        //            Console.BackgroundColor = ConsoleColor.Black;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine("Kahjuks oranzi ei ole");
+        //            break;
+        //        case "kollane":
+        //            Console.BackgroundColor = ConsoleColor.Yellow;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">kollane");
+        //            break;
+        //        case "roheline":
+        //            Console.BackgroundColor = ConsoleColor.Green;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">roheline");
+        //            break;
+        //        case "sinine":
+        //            Console.BackgroundColor = ConsoleColor.Blue;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">sinine");
+        //            break;
+        //        case "helesinine":
+        //            Console.BackgroundColor = ConsoleColor.Cyan;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine(">helesinine");
+        //            break;
+        //        case "tumeroheline":
+        //            Console.BackgroundColor = ConsoleColor.DarkGreen;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine(">tumeroheline");
+        //            break;
+        //        case "tumesinine":
+        //            Console.BackgroundColor = ConsoleColor.DarkBlue;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">tumesinine");
+        //            break;
+        //        case "lilla":
+        //            Console.BackgroundColor = ConsoleColor.Magenta;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">lilla");
+        //            break;
+        //        case "roosa":
+        //            Console.BackgroundColor = ConsoleColor.Black;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine("Kahjuks roosa ei ole");
+        //            break;
+        //        case "pruun":
+        //            Console.BackgroundColor = ConsoleColor.DarkYellow;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine(">pruun");
+        //            break;
+        //        case "must":
+        //            Console.BackgroundColor = ConsoleColor.Black;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine(">tumesinine");
+        //            break;
+        //        case "valge":
+        //            Console.BackgroundColor = ConsoleColor.White;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">valge");
+        //            break;
+        //        case "hall":
+        //            Console.BackgroundColor = ConsoleColor.Gray;
+        //            Console.ForegroundColor = ConsoleColor.Black;
+        //            Console.WriteLine(">hall");
+        //            break;
+        //        default:
+        //            Console.BackgroundColor = ConsoleColor.Black;
+        //            Console.ForegroundColor = ConsoleColor.White;
+        //            Console.WriteLine($"Ei tunne sellist värvi{värv}");
+        //            break;
+
+            }
         }
 
-    }
-}
+
+            
