@@ -408,7 +408,7 @@ namespace MinuKonspekt
                                                           //parameetrile. Meetod tagastab kas "true" või "false" - on leitud või ei ole. Tegemist on 
                                                           //põhimõtteliselt Foreach tsükliga, mis otsib kindlat vastet, töötades läbi kogu loendi. 
             arvuNimekiri3.Remove(4); //loendi meetod "Remove()" eemaldab en
-                                     //ee
+                                     
         }
     }    
         
