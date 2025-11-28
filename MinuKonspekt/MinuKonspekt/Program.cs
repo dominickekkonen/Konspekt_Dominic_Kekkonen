@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MinuKonspekt
 {
@@ -371,6 +372,7 @@ namespace MinuKonspekt
             foreach (var arvInloend in arvuloend) ; //kaitstud sõna foreach alustab foreach tsükli. Pärast mida on sulud, mille vahel tekitatakse 
                                                     //ajutine muutuja andmetüübiga "var" töödeldava andmekogumi üksikelemendi jaoks. süntaksis olev 
                                                     //kaitstud sõna "in" oleva andmekogumi elementi. Tsükli  ei ole 
+            //void on andmetüüp, mida muutuja tekitamisel kasutada ei saa. kasutatakse ainult meetodite signatuurides väljendamaks et meetod ei tagasta midagi
             //2. Loend
             //List<T> -> Loend on komposiitandmetüüp, mille sees saab olla mitmeid samat tüüpi liht ja komposiitandmeid. Loend- tüüpi andmeid tähistatakse 
             //           täiendava  andmetüübikirjeldusega "List" mille järel noolsulgudesse <> asetatakse mis tüübi andmed seal loendis on.
@@ -408,7 +410,80 @@ namespace MinuKonspekt
                                                           //parameetrile. Meetod tagastab kas "true" või "false" - on leitud või ei ole. Tegemist on 
                                                           //põhimõtteliselt Foreach tsükliga, mis otsib kindlat vastet, töötades läbi kogu loendi. 
             arvuNimekiri3.Remove(4); //loendi meetod "Remove()" eemaldab en
-                                     
+
+            /*Meetodid*/
+            //meetodid on väljakutsutavad koodijupid. Meetodid teostavad tavaliselt mingeid spetsifilisi funktsioone või tegevusi. 
+            //Meetodid lasevad programmeerijal taaskasutada oma ellnevalt kirjutatud koodi - write once use many times. 
+            //Meetodeid on kahte liiki - Ühed, mis tagastavad mingisuguse töö või tegevuse tagajärel või tulemusena andmeid, ja teised 
+            //mis ei tagasta midagi, kuid omavad siiski mingit tegevust.
+
+            //Meetodi signatuur & selle kompositsioon:
+            //Meetodi signatuur on kõige esimine rida, mis meetodi tekitamiseks kirjutakse, ning mis kirjeldab meetodidt ennast, ning selle 
+            //omadusi. 
+            //
+            //Meetodi signatuur koosneb mitmest kindlast äramääratud omadusest. Nendeks on juurdepääsu modifikaator, tagastutüüp, 
+            //meetodi enda nimi, olenevalt meetodi liigist ka parametrid mis on sulgude vahel (), ning koodiplokkist mis on meetodi sisu.
+            //- Juurdpääsu modifikaator ütleb ära, kust ja kuidas seda meetodid välja kutsuda või adresseerida saab. juurdepääsu modifikaatoreid
+            // on tähtsamatest 4-5 tükki.
+            // 1 - public- meetod on avalik ja kättesaadav ka teistes klassides, peale selle klassi, kus meetod ise asub.
+            // 2 - private- meetod on saadav ainult selles klassis kus meetod ise asub 
+            // 3 - protected- meetod on saadav ainult selles klassis kus meetod ise asub ja klassis mis pärilusega saab selle klassi andmed kaasa
+            // 4 - internal- meetod on saadav ainult selles klassis ja ainult selles failis. 
+            // 5 - static- vahest võib olla pandud ka static, see ütleb lihtsalt et see meetod asub siin.
+
+            // - Tagastustüüp on meetodi omadus, mis ütleb ära millise tüübiga andmed meetodi väljakutsumise asukohta tagastatakse, kui üldse. 
+            //Andmetüüp, mida tagastada, võib olla ükskõik milline liht- või kombinatsioonandmetüüp. Aga kui meetod ei tagasta üldse andmeid 
+            //pannakse selle asemel andmetüübiks "void" . Kui meetodil on tagastustüüp mis on midagi muud kui void, on meetodi sees, iga toimiva 
+            //koodisumma lõpus kaitstud sõna "return", return ütleb et, just see asi on vaja tagastada. peale returni on alati mingisugune kindel 
+            //muutuja , või tegevuse tulemus, mis tagastatakse meetodi väljakutseasukohta. peale käevitanud returni, ei teostata mitte ühtegi
+            //muud meetodis olevat koodi, sest meetod on leidnud oma tagastava objekti, ning meetodi töö sellel hetkel katkestatakse. 
+            //Return on osaliselt kui ka break 
+            //
+            // – Meetodi enda nimi on midgi mille järgi arendaja meetodit kasutab, kutsub koodis välja, ning meetodi nimi peaks kuvama
+            // üldsõnaliselt mida see meetod teeb. Näites meetod nimega "A()"; ei ole hea, sest sõna "A" ei ütle programmeerijale mitte midagi.
+            // Aga näiteks meetod, nimega "ArvutaArvudKokku();” Ütleb arendajale ära, mida see meetod teeb. Ta ei raiska oma aega, selle
+            // meetodi enda koodi lugemisele.
+            //
+            // – Parameetrid on need, mis ütlevad, mis meetodil tema täaks vaja on. Parameeter, meetodi signatuuris võib olla teistmoodi
+            // väljendatud, kui on kirjutatud muutujja mis on koodi sees, mille jaoks seda kasutada vaja on.
+            //
+            // – 1. tüüpi meetod – ei tagasta midagi:
+            
+            public static void UusMeetod() //Meetodi signatuur, mis omab juurdepääsumodifikaatorid "public", "static" ütleb et ta kuulub sellesse 
+                                           //klassi. Tagastustüüp on "void" mis ütleb et andmeid meie meetod ei tagasta. pärast omadusi on selle 
+                                           //meetodi ńimi "UusMeetod" peale mida on sulud, kus parameetreid ei ole. 
+                                           //pärast signatuuri on koodiplokk selle meetodi koodiga, loogelise sulgude vahel {}
+            {
+            Console.WriteLine("Tere");     //Antud juhul on meetodi sisuks sõnumi kuvamine, mooduli "Console" abiga, mille seest punkti abil "."
+                                           //adresserime Console meetodid "Writeline" ning mille parametriks on sõne "Tere", paarameter asub 
+                                           //peale meetodi mine olevate sulgude vahel. lause lõppeb lauselõpumärgiga ";"
+                                           //See arendaja poold kirjutatud meetod rohkem koodi ei oma.
+
+            }
+
+        //2. Tüüpi meetod - tagastab väärtuse: 
+        int[] arvutatavadArvud = new int[] { 67, 69, 120, 540, 666 }; //Töödeldavad andmed, mis asuvad täisarvumasiivis, muutujanimega 
+                                                                      //"arvutatudArvud".
+
+        public static int ArvutaKokku(int[] arvud)  //Meetod mille signatuuris on juurdepääsumodifikaator "public", "static" ütleb et ta kuulub
+                                                    //sellesse klassi, tagastustüüp "int" ütleb, et programmis tagastatakse täisarv asukohata
+                                                    //koodis kus meetod algselt välja kutsuti. Siis on meetodi nimi "ArvutaKokku", ning sulgude
+                                                    //vahel ootab meetod täisarvumassiivi. Sellele massiivile pannakse meetodi siseselt ajutine
+                                                    //nimi "arvud". Meetod ootab esimes parametri asukohal just arvumassiivi olenemata mis
+                                                    //tema muutuja nimi on. Peale signatuuri on koodiplokk tehtava koodiga.
+        {
+            int summa = 0 ; //Tekkitan´me täisarvuandmetüüpi muutuja nimega "summa", kuhu esialgu omistatakse võrgusmärgi abil arv 0. Lause 
+                            //lõppeb lauselõpumärgiga ";"
+            foreach (var arv in arvud)  //tekitame "foreach" tsükli, mille kogumikuks on meetodisisene arvudemassiiv nimega "arvud", mille 
+                                        //iga elemendi ajutakse muutuja mini on "arv"
+            {   //peale seda on koodiplokk 
+                summa += arv;   //muutujale summa omistatakse += märgiga juurde hetkel tsüklis kasutuseolev arv. asendab tehet summa = summa + arv 
+            }
+            return summa;   //pärast tsükli töö lõppu on kaitstud sõna "return" mille järel on muutuja "summa", ning tagastatakse täisarv, 
+                            //mis asub muutujas summa, meetodi töö lõppeb.
+
+        }
+
         }
     }    
         
@@ -548,7 +623,7 @@ namespace MinuKonspekt
         //            break;
 
             }
-        }
+}
 
 
             
